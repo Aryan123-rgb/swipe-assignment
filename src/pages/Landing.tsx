@@ -31,7 +31,7 @@ const Landing = () => {
         </div>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
-          <Link to="/chat" className="w-full sm:w-auto">
+          <Link to="/dashboard" className="w-full sm:w-auto">
             <Button variant="default" size="lg" className="w-full gradient-primary hover:scale-105 transition-all duration-200">
               Interviewer
             </Button>
