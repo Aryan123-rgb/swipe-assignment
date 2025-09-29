@@ -17,54 +17,223 @@ import ProfileModal from "@/components/ProfileModal";
 // Mock data for the table
 const mockCandidates = [
   {
-    name: "Alice Johnson",
-    email: "alice.johnson@email.com",
-    score: 85,
+    id: "interview_001",
+    answers: [
+      {
+        question: "Tell me about yourself.",
+        answer:
+          "I am a frontend developer specializing in React and Next.js, passionate about building interactive UIs.",
+        timeLeft: 50,
+        score: 8,
+      },
+      {
+        question: "What are your strengths?",
+        answer: "Strong debugging skills and ability to learn quickly.",
+        timeLeft: 40,
+        score: 7,
+      },
+    ],
+    finalScore: 8,
     aiSummary:
-      "Strong technical skills with excellent problem-solving abilities. Demonstrated proficiency in algorithms and data structures. Shows great potential for senior roles.",
+      "Good communication, solid technical understanding of frontend concepts.",
+    status: "completed",
+    name: "Aryan Srivastava",
+    email: "aryan.srivastava@example.com",
+    phone: "+91-9876543210",
   },
   {
-    name: "Bob Smith",
-    email: "bob.smith@email.com",
-    score: 92,
+    id: "interview_002",
+    answers: [
+      {
+        question: "Why do you want this role?",
+        answer:
+          "I want to contribute to impactful projects and grow as a backend developer.",
+        timeLeft: 35,
+        score: 9,
+      },
+      {
+        question: "What are your weaknesses?",
+        answer:
+          "I sometimes take extra time to perfect small details, but I am improving on balancing speed and quality.",
+        timeLeft: 20,
+        score: 6,
+      },
+    ],
+    finalScore: 7,
     aiSummary:
-      "Outstanding performance in system design and coding challenges. Clear communication and structured thinking approach.",
+      "Candidate is motivated and self-aware, though slightly perfectionistic.",
+    status: "completed",
+    name: "Riya Sharma",
+    email: "riya.sharma@example.com",
+    phone: "+91-9123456780",
   },
   {
-    name: "Carol Davis",
-    email: "carol.davis@email.com",
-    score: 78,
+    id: "interview_003",
+    answers: [
+      {
+        question: "Tell me about yourself.",
+        answer:
+          "I am a computer science student with a strong interest in AI and data science.",
+        timeLeft: 60,
+        score: 8,
+      },
+      {
+        question: "What is your dream project?",
+        answer:
+          "Building an AI system that helps with climate change research.",
+        timeLeft: 40,
+        score: 9,
+      },
+    ],
+    finalScore: 9,
     aiSummary:
-      "Good grasp of fundamental concepts with room for improvement in advanced topics. Shows enthusiasm and willingness to learn.",
+      "Candidate is enthusiastic about AI and socially impactful projects.",
+    status: "in-progress",
+    name: "Karan Mehta",
+    email: "karan.mehta@example.com",
+    phone: "+91-9812345678",
   },
   {
-    name: "David Wilson",
-    email: "david.wilson@email.com",
-    score: 88,
-    aiSummary:
-      "Excellent coding practices and clean code structure. Strong understanding of software engineering principles and best practices.",
+    id: "interview_004",
+    answers: [
+      {
+        question: "What motivates you?",
+        answer:
+          "Learning new technologies and applying them in real-world solutions.",
+        timeLeft: 45,
+        score: 7,
+      },
+    ],
+    finalScore: 7,
+    aiSummary: "Candidate shows curiosity and eagerness to learn.",
+    status: "not-started",
+    name: "Priya Verma",
+    email: "priya.verma@example.com",
+    phone: "+91-9876501234",
   },
   {
-    name: "Eva Brown",
-    email: "eva.brown@email.com",
-    score: 95,
+    id: "interview_005",
+    answers: [
+      {
+        question: "What is your biggest achievement?",
+        answer: "Developed a mobile app with 10,000+ downloads.",
+        timeLeft: 30,
+        score: 8,
+      },
+      {
+        question: "Where do you see yourself in 5 years?",
+        answer: "Leading a team of developers in a product-based company.",
+        timeLeft: 55,
+        score: 9,
+      },
+    ],
+    finalScore: 9,
     aiSummary:
-      "Exceptional problem-solving skills and innovative thinking. Demonstrated ability to optimize solutions and think outside the box.",
+      "Ambitious candidate with a proven track record of personal projects.",
+    status: "completed",
+    name: "Aman Gupta",
+    email: "aman.gupta@example.com",
+    phone: "+91-9090909090",
   },
   {
-    name: "Frank Miller",
-    email: "frank.miller@email.com",
-    score: 73,
+    id: "interview_006",
+    answers: [
+      {
+        question: "How do you handle stress?",
+        answer: "I prioritize tasks and take short breaks to refocus.",
+        timeLeft: 40,
+        score: 7,
+      },
+    ],
+    finalScore: 7,
     aiSummary:
-      "Basic understanding of concepts with some gaps in advanced algorithms. Needs more practice but shows improvement potential.",
+      "Candidate is calm and handles stress with structured approaches.",
+    status: "completed",
+    name: "Sneha Nair",
+    email: "sneha.nair@example.com",
+    phone: "+91-9223344556",
+  },
+  {
+    id: "interview_007",
+    answers: [
+      {
+        question: "What is your biggest challenge?",
+        answer: "Balancing multiple projects simultaneously.",
+        timeLeft: 25,
+        score: 6,
+      },
+    ],
+    finalScore: 6,
+    aiSummary: "Candidate needs to improve time management skills.",
+    status: "in-progress",
+    name: "Vikram Singh",
+    email: "vikram.singh@example.com",
+    phone: "+91-9332211000",
+  },
+  {
+    id: "interview_008",
+    answers: [
+      {
+        question: "Tell me about a time you solved a tough problem.",
+        answer: "I optimized a SQL query reducing execution time by 80%.",
+        timeLeft: 30,
+        score: 9,
+      },
+    ],
+    finalScore: 9,
+    aiSummary: "Strong technical problem-solving skills.",
+    status: "completed",
+    name: "Neha Kapoor",
+    email: "neha.kapoor@example.com",
+    phone: "+91-9445566778",
+  },
+  {
+    id: "interview_009",
+    answers: [
+      {
+        question: "Why should we hire you?",
+        answer:
+          "Because I bring dedication, teamwork, and technical expertise.",
+        timeLeft: 45,
+        score: 8,
+      },
+    ],
+    finalScore: 8,
+    aiSummary:
+      "Candidate positions themselves as a reliable and skilled team player.",
+    status: "not-started",
+    name: "Arjun Malhotra",
+    email: "arjun.malhotra@example.com",
+    phone: "+91-9556677889",
+  },
+  {
+    id: "interview_010",
+    answers: [
+      {
+        question: "What are your career goals?",
+        answer:
+          "To become a full-stack engineer and contribute to open-source projects.",
+        timeLeft: 60,
+        score: 9,
+      },
+    ],
+    finalScore: 9,
+    aiSummary:
+      "Candidate has clear goals and passion for open-source contributions.",
+    status: "completed",
+    name: "Divya Patel",
+    email: "divya.patel@example.com",
+    phone: "+91-9667788990",
   },
 ];
 
 type SortOrder = "asc" | "desc" | null;
 
 const Dashboard = () => {
-  const intervieweeMap = useSelector((state: RootState) => state.interview.interviews);
-  const profiles = Object.values(intervieweeMap);
+  const intervieweeMap = useSelector(
+    (state: RootState) => state.interview.interviews
+  );
+  const profiles = Object.values(intervieweeMap); 
   const [openModal, setOpenModal] = useState(false);
   const [selectedProfileIndex, setSelectedProfileIndex] = useState<
     number | null
@@ -73,9 +242,9 @@ const Dashboard = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState<SortOrder>(null);
-
+  const combined = [...profiles, ...mockCandidates];
   const filteredAndSortedCandidates = useMemo(() => {
-    let filtered = profiles.filter(
+    let filtered = combined.filter(
       (candidate) =>
         candidate.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         candidate.email.toLowerCase().includes(searchTerm.toLowerCase())
