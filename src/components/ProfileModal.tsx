@@ -19,16 +19,7 @@ function ProfileModal({
   onClose: () => void;
   profile: Interview;
 }) {
-  // console.log("profile", profile);
-
-  const interviewId = profile.id;
-  const interviewMap = useSelector(
-    (state: RootState) => state.interview.interviews
-  );
-
-  // console.log("interviewMap", interviewMap);
-  const interview = interviewMap[interviewId];
-
+  const interview = profile;
   const getStatusColor = (status: string) => {
     switch (status) {
       case "completed":

@@ -13,9 +13,10 @@ import { ArrowUpDown, ArrowUp, ArrowDown } from "lucide-react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import ProfileModal from "@/components/ProfileModal";
+import { Interview } from "@/features/intervieweeSlice";
 
 // Mock data for the table
-const mockCandidates = [
+const mockCandidates : Interview[] = [
   {
     id: "interview_001",
     answers: [
@@ -363,7 +364,7 @@ const Dashboard = () => {
         <ProfileModal
           isOpen={openModal}
           onClose={() => setOpenModal(false)}
-          profile={profiles[selectedProfileIndex]}
+          profile={filteredAndSortedCandidates[selectedProfileIndex]}
         />
       )}
     </div>
