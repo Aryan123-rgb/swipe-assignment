@@ -45,8 +45,8 @@ const interviewSlice = createSlice({
         addQuestion: (state, action: PayloadAction<{ id: string, question: string, difficulty: string }>) => {
             const { id, question, difficulty } = action.payload;
             let timeLeft = 20;
-            if (difficulty == "medium") timeLeft = 40;
-            else if (difficulty == "hard") timeLeft = 60;
+            if (difficulty == "medium") timeLeft = 60;
+            else if (difficulty == "hard") timeLeft = 120;
 
             state.interviews[id].answers.push({ question, answer: "", timeLeft });
         },

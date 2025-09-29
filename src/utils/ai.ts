@@ -29,11 +29,12 @@ const summaryModel = model.withStructuredOutput(interviewSummarySchema);
 export const extractCredentialsFromText = async (text: string): Promise<ResumeData> => {
     const response = await structuredModel.invoke([
         new HumanMessage({
-            content: `Extract the candidate's name, email, and phone number from the following text. 
-      If any information is missing, leave it blank.
-      
-      Text:
-      ${text}`,
+            content: `Extract the candidate's full name, email, and phone number from the text below. 
+Return the result strictly as JSON with keys: name, email, phone. 
+If a field is missing, use an empty string.
+
+Text:
+${text}`,
         }),
     ]);
 
@@ -44,8 +45,11 @@ export const extractCredentialsFromText = async (text: string): Promise<ResumeDa
     };
 };
 
-export const generateInterviewQuestion = async (difficulty: "easy" | "medium" | "hard") : Promise<string> => {
-    const prompt = `Generate a ${difficulty} interview question for a Full Stack Developer role. including react and node questions. Provide the question only without any additional context or formatting.`;
+export const generateInterviewQuestion = async (difficulty: "easy" | "medium" | "hard"): Promise<string> => {
+    const prompt = `Generate a ${difficulty} interview question for a Full Stack Developer role (React + Node.js). 
+    The question must be answerable within about ${difficulty === "easy" ? "20" : difficulty === "medium" ? "60" : "120"} seconds. 
+    Return only the question, no extra text.`;
+
     const response = await model.invoke([
         new HumanMessage({
             content: prompt,
@@ -55,7 +59,19 @@ export const generateInterviewQuestion = async (difficulty: "easy" | "medium" | 
 }
 
 export const generateInterviewSummary = async (interview: Interview) => {
-    const prompt = `Create a summary for the interview for the candidate ${interview}`;
+    const prompt = `You are evaluating an interview.
+The candidate's answers are given as an array of objects with {question, answer, timeTaken, difficulty}.
+There are 2 easy, 2 medium, and 2 hard questions.
+
+1. Evaluate the quality of answers and time taken.
+2. Give a finalScore out of 100 (weight: easy=20%, medium=30%, hard=50%).
+3. Provide a concise aiSummary (2–3 sentences) describing strengths and weaknesses.
+
+Return strictly in JSON with keys: score, summary.
+
+Interview Data:
+${JSON.stringify(interview.answers, null, 2)}`
+
     const response = await summaryModel.invoke([
         new HumanMessage({
             content: prompt,

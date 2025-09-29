@@ -12,12 +12,14 @@ interface InterviewPanelProps {
   question: string;
   answer: string;
   onAnswerChange: (answer: string) => void;
+  isPaused: boolean;
 }
 
 const InterviewPanel = ({
   question,
   answer,
   onAnswerChange,
+  isPaused,
 }: InterviewPanelProps) => {
   const [activePanel, setActivePanel] = useState<"question" | "answer">(
     "question"
@@ -102,6 +104,7 @@ const InterviewPanel = ({
                   onChange={(e) => onAnswerChange(e.target.value)}
                   placeholder="Type your solution here..."
                   className="h-full min-h-full resize-none border-panel-border bg-background text-foreground placeholder:text-muted-foreground focus:border-primary transition-fast overflow-y-auto"
+                  disabled={isPaused}
                 />
               </div>
             </div>
@@ -142,6 +145,7 @@ const InterviewPanel = ({
                   onChange={(e) => onAnswerChange(e.target.value)}
                   placeholder="Type your solution here..."
                   className="h-full min-h-full resize-none border-panel-border bg-background text-foreground placeholder:text-muted-foreground focus:border-primary transition-fast overflow-y-auto"
+                  disabled={isPaused}
                 />
               </div>
             </div>

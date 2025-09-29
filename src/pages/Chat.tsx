@@ -94,6 +94,7 @@ const Chat = () => {
         question={question}
         answer={answer}
         onAnswerChange={setAnswer}
+        isPaused={isPaused}
       />
     </div>
   );
