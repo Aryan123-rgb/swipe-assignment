@@ -20,7 +20,7 @@ const apikey = import.meta.env.VITE_GOOGLE_API_KEY;
 
 const model = new ChatGoogleGenerativeAI({
     apiKey: apikey,
-    model: "gemini-2.5-flash-lite",
+    model: "gemini-2.5-flash",
 });
 
 const structuredModel = model.withStructuredOutput(ResumeDataSchema);
