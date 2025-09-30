@@ -76,6 +76,7 @@ const Chat = () => {
     await moveToNextQuestion();
     setIsLoading(false);
     setIsPaused(false);
+    setAnswer("");
   };
   console.log("interviewState", interview);
   console.log("time remaining", timeLeft);
